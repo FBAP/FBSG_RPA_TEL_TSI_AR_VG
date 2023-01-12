@@ -115,7 +115,7 @@
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithoutItemDetails&quot;).ToString+&quot;.xls&quot;" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithoutItemDetails&quot;).ToString+&quot;_&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy_hhmmss&quot;)+&quot;.xls&quot;" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
@@ -160,7 +160,7 @@
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithItemDetails&quot;).ToString+&quot;.xls&quot;" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithItemDetails&quot;).ToString+&quot;_&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy_hhmmss&quot;)+&quot;.xls&quot;" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
@@ -172,7 +172,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Flat file with items details" DisplayName="Invoke ChceckRecordsFromFlatFile workflow - with item details" sap:VirtualizedContainerService.HintSize="344,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="TSIPortal\ChceckRecordsFromFlatFile.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithItemDetails&quot;).ToString+&quot;.xls&quot;" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithItemDetails&quot;).ToString+&quot;_&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy_hhmmss&quot;)+&quot;.xls&quot;" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
       </ui:InvokeWorkflowFile.Arguments>
@@ -185,7 +185,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Flat file without items details" DisplayName="Invoke ChceckRecordsFromFlatFile workflow - without item details" sap:VirtualizedContainerService.HintSize="344,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TSIPortal\ChceckRecordsFromFlatFile.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithoutItemDetails&quot;).ToString+&quot;.xls&quot;" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithoutItemDetails&quot;).ToString+&quot;_&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy_hhmmss&quot;)+&quot;.xls&quot;" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
       </ui:InvokeWorkflowFile.Arguments>
