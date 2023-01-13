@@ -3,12 +3,12 @@
     <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_ExceptionMessage" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_dtFlatFile" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_dt_FlatFile" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1633.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,870</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ChceckRecordsFromFlatFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -79,20 +79,16 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks records are present or not in the flat file" DisplayName="ChceckRecordsFromFlatFile" sap:VirtualizedContainerService.HintSize="702.666666666667,1568.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks records are present or not in the flat file" DisplayName="ChceckRecordsFromFlatFile" sap:VirtualizedContainerService.HintSize="476,805.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: To check records are presemt in the flat file" sap:VirtualizedContainerService.HintSize="660.666666666667,1446" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: To check records are presemt in the flat file" sap:VirtualizedContainerService.HintSize="434,682.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check records are present or not in the flat file" DisplayName="Sequence: Check for flat file records" sap:VirtualizedContainerService.HintSize="622,1184.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_11">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="PoNumberValue" />
-            <Variable x:TypeArguments="x:String" Name="InvoiceNumberValue" />
-          </Sequence.Variables>
+        <Sequence sap2010:Annotation.AnnotationText="Check records are present or not in the flat file" DisplayName="Sequence: Check for flat file records" sap:VirtualizedContainerService.HintSize="622,980.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -111,7 +107,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtFlatFile]" DisplayName="Read Range: Flat File" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dt_FlatFile]" DisplayName="Read Range: Flat File" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
                     <ui:ExcelReadRange.Range>
                       <InArgument x:TypeArguments="x:String">
                         <Literal x:TypeArguments="x:String" Value="" />
@@ -129,23 +125,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
           <ui:LogMessage DisplayName="Log Message: Check records are present are not in the flat file flow - started" sap:VirtualizedContainerService.HintSize="580,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Check records are present are not in the flat file flow - Started &quot;]" />
-          <Assign DisplayName="Assign: PoNumberColumn" sap:VirtualizedContainerService.HintSize="580,62" sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[PoNumberValue]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[out_dtFlatFile.Rows(1)("PO Number").ToString]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign DisplayName="Assign: InvoiceNumberColumn" sap:VirtualizedContainerService.HintSize="580,62" sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[InvoiceNumberValue]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[out_dtFlatFile.Rows(1)("Invoice Num").ToString]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <If sap2010:Annotation.AnnotationText="If records are not present in the flat file, then it throws exception" Condition="[(out_dtFlatFile.Rows.Count = 0 Or String.IsNullOrEmpty(PoNumberValue)) and string.IsNullOrEmpty(InvoiceNumberValue)]" DisplayName="If: Datatable contains records" sap:VirtualizedContainerService.HintSize="580,289.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+          <If sap2010:Annotation.AnnotationText="If records are not present in the flat file, then it throws exception" Condition="[out_dt_FlatFile.Rows(0)(&quot;Invoice Category&quot;).ToString.Contains(&quot;No data found&quot;)]" DisplayName="If: Datatable contains records" sap:VirtualizedContainerService.HintSize="580,289.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -170,7 +150,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -184,10 +164,10 @@
             <ui:LogMessage DisplayName="Log Message: System exception" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[exception.Message+&quot; at &quot;+exception.Source]" />
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,487.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -227,9 +207,6 @@
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;RecipientsList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString" />
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SentOnBehalfName&quot;).ToString" />

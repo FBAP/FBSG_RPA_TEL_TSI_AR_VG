@@ -5,13 +5,12 @@
     <x:Property Name="in_AccountName" Type="InArgument(x:String)" />
     <x:Property Name="in_CcEmailList" Type="InArgument(x:String)" />
     <x:Property Name="in_RecipientsEmailList" Type="InArgument(x:String)" />
-    <x:Property Name="in_ExceptionAttachmentPath" Type="InArgument(x:String)" />
     <x:Property Name="in_SentOnBehalfOfName" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1392.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1296.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendExceptionEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -86,10 +85,9 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sends exception email to required recipients" DisplayName="SendExceptionEmail" sap:VirtualizedContainerService.HintSize="480.666666666667,1328" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sends exception email to required recipients" DisplayName="SendExceptionEmail" sap:VirtualizedContainerService.HintSize="480.666666666667,1232" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -98,7 +96,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message: Send exception email started" sap:VirtualizedContainerService.HintSize="438.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Send exception email flow - Started&quot;]" />
     <ui:LogMessage DisplayName="Log Message: Sending email" sap:VirtualizedContainerService.HintSize="438.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending exception email&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending exception" DisplayName="Try Catch: Send exception email" sap:VirtualizedContainerService.HintSize="438.666666666667,666.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending exception" DisplayName="Try Catch: Send exception email" sap:VirtualizedContainerService.HintSize="438.666666666667,570.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -107,16 +105,16 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:SendOutlookMail Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_AccountName]" sap2010:Annotation.AnnotationText="Sends exception email to the reqired recipients.&#xA;Below are the arguments which are used:&#xA;1.  in_RecipientsEmailList = Specify list of recipients.&#xA;2.  in_Subject = Specify email subject.&#xA;3.  in_Body = Specify email body.&#xA;4.  in_AccountName = Specify account name from which email should be send.&#xA;5.  in_ExceptionAttachmentPath = Specify exception screenshot path which needs to be attached to exception email&#xA;6." Body="[in_Body]" Cc="[in_CcEmailList]" DisplayName="Send Outlook Mail Message: Exception" sap:VirtualizedContainerService.HintSize="200,398" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" SentOnBehalfOfName="[in_SentOnBehalfOfName]" Subject="[in_Subject]" To="[in_RecipientsEmailList]">
+        <ui:SendOutlookMail Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_AccountName]" sap2010:Annotation.AnnotationText="Sends exception email to the reqired recipients.&#xA;Below are the arguments which are used:&#xA;1.  in_RecipientsEmailList = Specify list of recipients.&#xA;2.  in_Subject = Specify email subject.&#xA;3.  in_Body = Specify email body.&#xA;4.  in_AccountName = Specify account name from which email should be send.&#xA;" Body="[in_Body]" Cc="[in_CcEmailList]" DisplayName="Send Outlook Mail Message: Exception" sap:VirtualizedContainerService.HintSize="334,302" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" SentOnBehalfOfName="[in_SentOnBehalfOfName]" Subject="[in_Subject]" To="[in_RecipientsEmailList]">
           <ui:SendOutlookMail.Files>
             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-              <InArgument x:TypeArguments="x:String">[in_ExceptionAttachmentPath]</InArgument>
+              <InArgument x:TypeArguments="x:String" />
             </scg:List>
           </ui:SendOutlookMail.Files>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

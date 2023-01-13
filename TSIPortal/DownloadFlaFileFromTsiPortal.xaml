@@ -22,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1218</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1092</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFlaFileFromTsiPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -88,22 +88,29 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file downloads flat files from the TSI portal&#xA;Below are rthe paramaeteres which are used:&#xA;1. in_ItemDetailsFlag = Specify TRUE if you ned to download flat file with item details, else specify FALSE for flat file without item details." DisplayName="DownloadFlaFileFromTsiPortal" sap:VirtualizedContainerService.HintSize="476,1153.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file downloads flat files from the TSI portal&#xA;Below are rthe paramaeteres which are used:&#xA;1. in_ItemDetailsFlag = Specify TRUE if you ned to download flat file with item details, else specify FALSE for flat file without item details." DisplayName="DownloadFlaFileFromTsiPortal" sap:VirtualizedContainerService.HintSize="476,1027.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Download Flat file flow started" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;TSI: Download flat file flow - Started&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for Download flat files from portal" DisplayName="Try Catch: Download flat files from portal" sap:VirtualizedContainerService.HintSize="434,713.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message: Download Flat file flow started" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;TSI: Download flat file flow - Started&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for Download flat files from portal" DisplayName="Try Catch: Download flat files from portal" sap:VirtualizedContainerService.HintSize="434,671.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: TSI portal home page" sap:VirtualizedContainerService.HintSize="671.333333333333,1226" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="948656dbc0b3402986033c3f43db0ef2" Selector="&lt;html app='chrome.exe' omit:title='*Product List*' /&gt;">
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: TSI portal home page" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="948656dbc0b3402986033c3f43db0ef2" Selector="&lt;html app='chrome.exe' omit:title='*Product List*' /&gt;">
           <ui:BrowserScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
@@ -198,26 +205,26 @@
         </ui:BrowserScope>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,487.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,445.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ActivityAction x:TypeArguments="s:Exception">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception email if TSI portal invoice details page not available" DisplayName="Sequence: Invoice details page not available" sap:VirtualizedContainerService.HintSize="376,416.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception email if TSI portal invoice details page not available" DisplayName="Sequence: Invoice details page not available" sap:VirtualizedContainerService.HintSize="376,374.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: TSI Invoice page error" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Exception occurred: &quot;+exception.Message+&quot; at &quot;+exception.Source]">
+              <ui:LogMessage DisplayName="Log Message: TSI Invoice page error" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Exception occurred: &quot;+exception.Message+&quot; at &quot;+exception.Source]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -242,16 +249,13 @@
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;RecipientsList&quot;).ToString" />
                   </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString" />
-                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SentOnBehalfName&quot;).ToString" />
                   </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -270,11 +274,11 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: Business exception Download flat file" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[exception.Message+&quot; at &quot;+exception.Source]" />
+            <ui:LogMessage DisplayName="Log Message: Business exception Download flat file" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[exception.Message+&quot; at &quot;+exception.Source]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Download Flat file flow ended" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;TSI: Download flat file flow - Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Download Flat file flow ended" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;TSI: Download flat file flow - Ended&quot;]" />
   </Sequence>
 </Activity>

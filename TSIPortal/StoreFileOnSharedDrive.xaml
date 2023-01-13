@@ -97,7 +97,7 @@
         <InArgument x:TypeArguments="x:String">[Directory.GetFiles(in_SourceFolderPath,"*.xls*").OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToList(0)]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,659.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: Store files on sharepoint" sap:VirtualizedContainerService.HintSize="434,659.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Sequence: Check flat file and move it to shared location" sap:VirtualizedContainerService.HintSize="764,820.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -181,9 +181,6 @@
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;RecipientsList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString" />
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SentOnBehalfName&quot;).ToString" />

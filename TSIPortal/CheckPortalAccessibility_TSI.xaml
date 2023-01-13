@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>804,1296</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1296</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckPortalAccessibility_TSI_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -237,9 +237,6 @@
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;RecipientsList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString" />
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SentOnBehalfName&quot;).ToString" />
