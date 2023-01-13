@@ -230,6 +230,9 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_DestinationFolderPath">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FlatFilePath" />
         </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
