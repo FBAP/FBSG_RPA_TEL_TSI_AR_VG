@@ -1,11 +1,14 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TsiUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_ProcessFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1004.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1004.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -35,6 +38,8 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -65,6 +70,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376.666666666667,940" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -77,18 +83,30 @@
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_TSI workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\CheckPortalAccessibility_TSI.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Portal">[in_Config("TSIPortalUrl").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("TSISignInPageException").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("TimeoutMedium").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[cint(in_Config("NumberOfRetries").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[TimeSpan.Parse(in_Config("RetryInterval").ToString)]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Portal">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TsiUrl" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSISignInPageException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(in_Config(&quot;NumberOfRetries&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
+          <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="TimeSpan.Parse(in_Config(&quot;RetryInterval&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Shared Drive project main folder" DisplayName="Invoke CreateSharedDriveFolder workflow - project folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ProcessFolderPath" />
         </InArgument>
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
           <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Convert.ToBoolean(in_Config(&quot;SharedFolderCreationFlag&quot;).ToString)" />
@@ -112,7 +130,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Month folder" DisplayName="Invoke CreateSharedDriveFolder workflow - Month Folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ProcessFolderPath+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
         </InArgument>
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
           <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Convert.ToBoolean(in_Config(&quot;SharedFolderCreationFlag&quot;).ToString)" />
@@ -136,7 +154,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Date folder" DisplayName="Invoke CreateSharedDriveFolder workflow - Date folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ProcessFolderPath+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)" />
         </InArgument>
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
           <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Convert.ToBoolean(in_Config(&quot;SharedFolderCreationFlag&quot;).ToString)" />

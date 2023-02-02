@@ -5,13 +5,11 @@
     <x:Property Name="in_Body" Type="InArgument(x:String)" />
     <x:Property Name="in_AccountName" Type="InArgument(x:String)" />
     <x:Property Name="in_CcEmailList" Type="InArgument(x:String)" />
-    <x:Property Name="in_ExceptionAttachmentPath" Type="InArgument(x:String)" />
-    <x:Property Name="in_ProcessStartFlag" Type="InArgument(x:Boolean)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1582</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1311.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendProcessNotificationAndStatus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -84,16 +82,16 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file Sends process end notification and status report to the required recipients" DisplayName="SendProcessNotificationAndStatus" sap:VirtualizedContainerService.HintSize="606.666666666667,1517.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file Sends process end notification and status report to the required recipients" DisplayName="SendProcessNotificationAndStatus" sap:VirtualizedContainerService.HintSize="480.666666666667,1246.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Send status report flow started" sap:VirtualizedContainerService.HintSize="564.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Send status report flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Sending process end notification" sap:VirtualizedContainerService.HintSize="564.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending process end notification&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending process end notifiation and status " DisplayName="Try Catch: Send process end notification and status " sap:VirtualizedContainerService.HintSize="564.666666666667,856" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message: Send status report flow started" sap:VirtualizedContainerService.HintSize="438.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Send process notification flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Sending process notification" sap:VirtualizedContainerService.HintSize="438.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending process notification&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending process notifiation and status " DisplayName="Try Catch: Send process notification and status " sap:VirtualizedContainerService.HintSize="438.666666666667,570.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -102,48 +100,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="526,587.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <ui:SendOutlookMail Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_AccountName]" sap2010:Annotation.AnnotationText="Sends exception email to the reqired recipients.&#xA;Below are the arguments which are used:&#xA;1.  in_RecipientsEmailList = Specify list of recipients.&#xA;2.  in_Subject = Specify email subject.&#xA;3.  in_Body = Specify email body.&#xA;4.  in_AccountName = Specify account name from which email should be send.&#xA;" Body="[in_Body]" Cc="[in_CcEmailList]" DisplayName="Send Outlook Mail Message: Process notification" sap:VirtualizedContainerService.HintSize="334,302" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_RecipientsEmailList]">
+          <ui:SendOutlookMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+              <InArgument x:TypeArguments="x:String" />
+            </scg:List>
+          </ui:SendOutlookMail.Files>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[in_ProcessStartFlag]" DisplayName="If: Process end notification" sap:VirtualizedContainerService.HintSize="484,495.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
-            <If.Then>
-              <ui:SendOutlookMail Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_AccountName]" sap2010:Annotation.AnnotationText="Sends exception email to the reqired recipients.&#xA;Below are the arguments which are used:&#xA;1.  in_RecipientsEmailList = Specify list of recipients.&#xA;2.  in_Subject = Specify email subject.&#xA;3.  in_Body = Specify email body.&#xA;4.  in_AccountName = Specify account name from which email should be send.&#xA;" Body="[in_Body]" Cc="[in_CcEmailList]" DisplayName="Send Outlook Mail Message: Process end and status" sap:VirtualizedContainerService.HintSize="200,298" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_RecipientsEmailList]">
-                <ui:SendOutlookMail.Files>
-                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
-                </ui:SendOutlookMail.Files>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:SendOutlookMail>
-            </If.Then>
-            <If.Else>
-              <ui:SendOutlookMail Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_AccountName]" sap2010:Annotation.AnnotationText="&#xA;1.  in_RecipientsEmailList = Specify list of recipients.&#xA;2.  in_Subject = Specify email subject.&#xA;3.  in_Body = Specify email body.&#xA;4.  in_AccountName = Specify account name from which email should be send.&#xA;5.  in_ExceptionAttachmentPath = Specify exception screenshot path which needs to be attached to exception email" Body="[in_Body]" Cc="[in_CcEmailList]" DisplayName="Send Outlook Mail Message: Process end and status" sap:VirtualizedContainerService.HintSize="200,331.333333333333" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_RecipientsEmailList]">
-                <ui:SendOutlookMail.Files>
-                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                    <InArgument x:TypeArguments="x:String">[in_ExceptionAttachmentPath]</InArgument>
-                  </scg:List>
-                </ui:SendOutlookMail.Files>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:SendOutlookMail>
-            </If.Else>
-          </If>
-        </Sequence>
+        </ui:SendOutlookMail>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="530.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -159,7 +130,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Process End notification sent" sap:VirtualizedContainerService.HintSize="564.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Process end notification sent with status report&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Send status report flow - Ended" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Send status report flow - Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Process notification sent" sap:VirtualizedContainerService.HintSize="438.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Process notification sent&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Send process notification flow ended" sap:VirtualizedContainerService.HintSize="438.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Send process notification flow - Ended&quot;]" />
   </Sequence>
 </Activity>
