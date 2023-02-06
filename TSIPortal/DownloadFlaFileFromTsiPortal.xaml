@@ -110,33 +110,40 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: TSI portal home page" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="948656dbc0b3402986033c3f43db0ef2" Selector="&lt;html app='chrome.exe' omit:title='*Product List*' /&gt;">
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: TSI portal home page" sap:VirtualizedContainerService.HintSize="671.333333333333,1354.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="948656dbc0b3402986033c3f43db0ef2" Selector="&lt;html app='chrome.exe' omit:title='*Product List*' /&gt;">
           <ui:BrowserScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="637.333333333333,1080" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="637.333333333333,1168.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="isInvoiceReportPageExists" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message: Navigating to Invoice details report page" sap:VirtualizedContainerService.HintSize="595.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Navigating to Invoice details report page&quot;]" />
-                <ui:RetryScope sap2010:Annotation.AnnotationText="Checks if VIS Invoice details report page is exists or not.&#xA;If No, it retries for 3 times." DisplayName="Retry Scope: TSI invoice details report page" sap:VirtualizedContainerService.HintSize="595.333333333333,493.333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
+                <ui:LogMessage DisplayName="Log Message: Navigating to Invoice details report page" sap:VirtualizedContainerService.HintSize="595.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Navigating to Invoice details report page&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <ui:RetryScope sap2010:Annotation.AnnotationText="Checks if VIS Invoice details report page is exists or not.&#xA;If No, it retries for 3 times." DisplayName="Retry Scope: TSI invoice details report page" sap:VirtualizedContainerService.HintSize="595.333333333333,582" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
-                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,181.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,190" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:NavigateTo Browser="{x:Null}" sap2010:Annotation.AnnotationText="Navigates to invoice details report page" DisplayName="Navigate To: Invoice report page URL" sap:VirtualizedContainerService.HintSize="334,89.3333333333333" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_InvoiceReportPageUrl]">
+                        <ui:NavigateTo Browser="{x:Null}" sap2010:Annotation.AnnotationText="Navigates to invoice details report page" DisplayName="Navigate To: Invoice report page URL" sap:VirtualizedContainerService.HintSize="200,98" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_InvoiceReportPageUrl]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -152,6 +159,11 @@
                         <ui:UiElementExists.Target>
                           <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="28046c39-94bd-4862-a906-d57e019478ac" InformativeScreenshot="8e7988f81b421af812c97956b6d8d956" Selector="&lt;html app='chrome.exe' title='*VIS Invoice Header/Details Report*' /&gt;&lt;webctrl tag='B' aaname='*VIS Invoice Header/Details Report*' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
                         </ui:UiElementExists.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
                       </ui:UiElementExists>
                     </ActivityFunc>
                   </ui:RetryScope.Condition>
@@ -159,7 +171,7 @@
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
@@ -167,20 +179,42 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnterDetailsOnTsiDownloadFile workflow" sap:VirtualizedContainerService.HintSize="349.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\EnterDetailsOnTsiDownloadFile.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("TimeoutMedium").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">[CInt(in_Config("GlFromDateValue").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">[CInt(in_Config("GlToDateValue").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">[in_ItemDetailsFlag]</InArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">[in_FlatFilePath]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayBefore&quot;).ToString)" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayAfter&quot;).ToString)" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;TimeoutMedium&quot;).ToString)" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;GlFromDateValue&quot;).ToString)" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;GlToDateValue&quot;).ToString)" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">
+                          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_ItemDetailsFlag" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FlatFilePath" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
                   </If.Then>
                   <If.Else>
@@ -199,7 +233,7 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:BrowserScope>

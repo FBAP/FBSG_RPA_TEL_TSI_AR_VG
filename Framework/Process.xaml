@@ -4,6 +4,14 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_ItemDetailsPath" Type="OutArgument(x:String)" />
     <x:Property Name="out_WithoutItemDetailsPath" Type="OutArgument(x:String)" />
+    <x:Property Name="in_InvoiceReportPageUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_GlFromDateValue" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_GlToDateValue" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DelayBefore" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_NumberOfRetries" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RetryInterval" Type="InArgument(x:TimeSpan)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -81,6 +89,7 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="476,1856" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -96,18 +105,42 @@
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Download files without item details" DisplayName="Invoke DownloadFlaFileFromTsiPortal workflow - Without item details" sap:VirtualizedContainerService.HintSize="434,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\DownloadFlaFileFromTsiPortal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">False</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceReportPageUrl">[in_Config("InvoiceReportPageUrl").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">[CInt(in_Config("GlFromDateValue").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">[CInt(in_Config("GlToDateValue").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("TSIInvoiceDetailsPageNotAvailableException").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("TimeoutMedium").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[cint(in_Config("NumberOfRetries").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[TimeSpan.Parse(in_Config("RetryInterval").ToString)]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">[in_Config("DirectoryPath").ToString+Environment.UserName+in_Config("FolderPath").ToString+DateTime.Now.ToString("MMMyyyy")+"\"+DateTime.Now.ToString("ddMMMyyyy")+"\"+in_Config("FlatFileNameWithoutItemDetails").ToString+".xls"]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">
+          <Literal x:TypeArguments="x:Boolean" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceReportPageUrl">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceReportPageUrl" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_GlFromDateValue" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_GlToDateValue" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSIInvoiceDetailsPageNotAvailableException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
+          <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="TimeSpan.Parse(in_Config(&quot;RetryInterval&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithoutItemDetails&quot;).ToString+&quot;.xls&quot;" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -117,18 +150,42 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Download files with item details" DisplayName="Invoke DownloadFlaFileFromTsiPortal workflow - with item details" sap:VirtualizedContainerService.HintSize="434,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="TSIPortal\DownloadFlaFileFromTsiPortal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">True</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceReportPageUrl">[in_Config("InvoiceReportPageUrl").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">[CInt(in_Config("GlFromDateValue").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">[CInt(in_Config("GlToDateValue").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("TSIInvoiceDetailsPageNotAvailableException").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("TimeoutMedium").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[cint(in_Config("NumberOfRetries").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[TimeSpan.Parse(in_Config("RetryInterval").ToString)]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">[in_Config("DirectoryPath").ToString+Environment.UserName+in_Config("FolderPath").ToString+DateTime.Now.ToString("MMMyyyy")+"\"+DateTime.Now.ToString("ddMMMyyyy")+"\"+in_Config("FlatFileNameWithItemDetails").ToString+".xls"]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">
+          <Literal x:TypeArguments="x:Boolean" Value="True" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceReportPageUrl">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;InvoiceReportPageUrl&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;GlFromDateValue&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;GlToDateValue&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSIInvoiceDetailsPageNotAvailableException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayBefore&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayAfter&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;TimeoutMedium&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(in_Config(&quot;NumberOfRetries&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
+          <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="TimeSpan.Parse(in_Config(&quot;RetryInterval&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;FolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+DateTime.Now.ToString(&quot;ddMMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileNameWithItemDetails&quot;).ToString+&quot;.xls&quot;" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
