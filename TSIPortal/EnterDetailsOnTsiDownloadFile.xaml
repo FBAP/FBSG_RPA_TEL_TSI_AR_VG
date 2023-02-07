@@ -8,6 +8,7 @@
     <x:Property Name="in_ItemDetailsFlag" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="out_FilePath" Type="OutArgument(x:String)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>1150,3106.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -233,6 +234,9 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_FilePath" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
