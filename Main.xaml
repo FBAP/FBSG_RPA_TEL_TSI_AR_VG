@@ -81,7 +81,6 @@
       <AssemblyReference>System.Windows.Forms</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Process title]&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687.333333333333,803.333333333333" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -207,6 +206,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <Transition.Condition>[TransactionNumber = 1]</Transition.Condition>
           <Transition.To>
             <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231.333333333333,198.666666666667" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
@@ -244,8 +244,8 @@
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(Config("Timeout").ToString)]</InArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[CInt(Config("NumberOfRetries").ToString)]</InArgument>
                           <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[TimeSpan.Parse(Config("RetryInterval").ToString)]</InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_ItemDetailsPath" />
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_WithoutItemDetailsPath" />
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_ItemDetailsPath">[itemDetailsFilePath]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_WithoutItemDetailsPath">[withoutItemDetailsFilePath]</OutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438.666666666667,352" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -441,9 +441,9 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="611.333333333333,3233.33333333333" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,106.666666666667" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="564.666666666667,2804" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="564.666666666667,2540.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -451,7 +451,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="526,2566" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="526,2302.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -565,152 +565,27 @@
                                   <Throw DisplayName="Throw Consecutive Exceptions exceeded" Exception="[new Exception(Config(&quot;ExceptionMessage_ConsecutiveErrors&quot;).ToString + &quot; Consecutive retry number: &quot; + (ConsecutiveSystemExceptions+1).ToString)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
                                 </If.Then>
                               </If>
-                              <ui:CommentOut DisplayName="Comment Out - Uncomment process start" sap:VirtualizedContainerService.HintSize="484,315.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                                <ui:CommentOut.Body>
-                                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="407.333333333333,236.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_34">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send process started notification" DisplayName="Invoke Process start notfication" sap:VirtualizedContainerService.HintSize="365.333333333333,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Outlook\SendProcessNotificationAndStatus.xaml">
-                                      <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessRecipientsList&quot;).ToString" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessStartSubject&quot;).ToString" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessStartBody&quot;).ToString" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessCCList&quot;).ToString" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath" />
-                                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ProcessStartFlag">
-                                          <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                        </InArgument>
-                                      </ui:InvokeWorkflowFile.Arguments>
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                    </ui:InvokeWorkflowFile>
-                                  </Sequence>
-                                </ui:CommentOut.Body>
-                              </ui:CommentOut>
-                              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                                <ui:CommentOut.Body>
-                                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,1440.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence DisplayName="Sequence: Get all assets" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;TSIPortalUrl&quot;).ToString]" DisplayName="Get Asset: TSI Url" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:String">[tsiUrl]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;InvoiceReportPageUrl&quot;).ToString]" DisplayName="Get Asset: Invoice report page URL" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:String">[invoiceReportPageUrl]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;GlFromDateValue&quot;).ToString]" DisplayName="Get Asset: GL From date" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:Int32">[glFromDateValue]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;GlToDateValue&quot;).ToString]" DisplayName="Get Asset: GL TO Date" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:Int32">[glToDateValue]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;Timeout&quot;).ToString]" DisplayName="Get Asset: Timeout" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:Int32">[timeoutMedium]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;ProcessFolderPath&quot;).ToString]" DisplayName="Get Asset: ProcessFolder Path" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:String">[processFolderPath]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;RetryInterval&quot;).ToString]" DisplayName="Get Asset: Retry Interval" sap:VirtualizedContainerService.HintSize="334,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:String">[retryInterval]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                      </ui:GetRobotAsset>
-                                    </Sequence>
-                                  </Sequence>
-                                </ui:CommentOut.Body>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send process started notification" DisplayName="Invoke Process start notfication" sap:VirtualizedContainerService.HintSize="484,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Outlook\SendProcessNotificationAndStatus.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">[Config("ProcessRecipientsList").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[Config("ProcessStartSubject").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[Config("ProcessStartBody").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[Config("ProcessCCList").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath" />
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_ProcessStartFlag">True</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                              </ui:CommentOut>
+                              </ui:InvokeWorkflowFile>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_TsiUrl">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;TSIPortalUrl&quot;).ToString" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(Config(&quot;Timeout&quot;).ToString)" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessFolderPath">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessFolderPath&quot;).ToString" />
-                                  </InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_TsiUrl">[Config("TSIPortalUrl").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[cint(Config("Timeout").ToString)]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessFolderPath">[Config("ProcessFolderPath").ToString]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -795,22 +670,12 @@
                                     <If.Then>
                                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send process ended notification" DisplayName="Invoke Process END notfication" sap:VirtualizedContainerService.HintSize="365.333333333333,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Outlook\SendProcessNotificationAndStatus.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessRecipientsList&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessEndEmailSubject&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessEndEmailBody&quot;).ToString" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessCCList&quot;).ToString" />
-                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">[Config("ProcessRecipientsList").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[Config("ProcessEndEmailSubject").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Body">[Config("ProcessEndEmailBody").ToString+itemDetailsFilePath+Environment.NewLine+withoutItemDetailsFilePath+Environment.NewLine+Environment.NewLine+"Thanks,"+Environment.NewLine+"Bot"]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[Config("ProcessCCList").ToString]</InArgument>
                                           <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath" />
-                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_ProcessStartFlag">
-                                            <Literal x:TypeArguments="x:Boolean" />
-                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_ProcessStartFlag">False</InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -929,10 +794,6 @@
               </State.Transitions>
             </State>
           </Transition.To>
-          <Transition.Action>
-            <ui:LogMessage DisplayName="Log message (New transaction retrieved)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[Config(&quot;LogMessage_GetTransactionData&quot;).ToString+TransactionNumber.ToString]" />
-          </Transition.Action>
-          <Transition.Condition>[TransactionNumber = 1]</Transition.Condition>
         </Transition>
         <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="451.333333333333,884.666666666667" sap2010:WorkflowViewState.IdRef="Transition_7">
           <sap:WorkflowViewStateService.ViewState>
@@ -969,13 +830,8 @@
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Transaction ID used for information and logging purposes. Ideally, the ID should be unique for each transaction. " Name="TransactionID" />
       <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Used in case transactions are stored in a DataTable, for example, after being retrieved from a spreadsheet." Name="dt_TransactionData" />
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="ConsecutiveSystemExceptions" />
-      <Variable x:TypeArguments="x:String" Name="tsiUrl" />
-      <Variable x:TypeArguments="x:String" Name="invoiceReportPageUrl" />
-      <Variable x:TypeArguments="x:Int32" Name="glFromDateValue" />
-      <Variable x:TypeArguments="x:Int32" Name="glToDateValue" />
-      <Variable x:TypeArguments="x:Int32" Name="timeoutMedium" />
-      <Variable x:TypeArguments="x:String" Name="processFolderPath" />
-      <Variable x:TypeArguments="x:String" Name="retryInterval" />
+      <Variable x:TypeArguments="x:String" Name="itemDetailsFilePath" />
+      <Variable x:TypeArguments="x:String" Name="withoutItemDetailsFilePath" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>

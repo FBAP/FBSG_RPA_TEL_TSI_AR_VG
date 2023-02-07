@@ -74,14 +74,12 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This .xaml file stores required file on shared drive" DisplayName="StoreFileOnSharedDrive" sap:VirtualizedContainerService.HintSize="844.666666666667,1789.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="sourceFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isSourceFileExists" />
-      <Variable x:TypeArguments="x:String" Name="destinationFilePath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
