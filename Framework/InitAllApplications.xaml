@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1189.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1189.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -83,29 +83,30 @@
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_TSI workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\CheckPortalAccessibility_TSI.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Portal">[in_TsiUrl]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("TSISignInPageException").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_Timeout]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[cint(in_Config("NumberOfRetries").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[TimeSpan.Parse(in_Config("RetryInterval").ToString)]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Portal">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TsiUrl" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSISignInPageException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(in_Config(&quot;NumberOfRetries&quot;).ToString)" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Shared Drive project main folder" DisplayName="Invoke CreateSharedDriveFolder workflow - project folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessFolderPath&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableException&quot;).ToString+in_Config(&quot;SharedFolderName&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_Config("ProcessFolderPath").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("SharedFolderNotAvailableException").ToString+in_Config("SharedFolderName").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName" />
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -115,21 +116,11 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Month folder" DisplayName="Invoke CreateSharedDriveFolder workflow - Month Folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessFolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableException&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_Config("ProcessFolderPath").ToString+DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("SharedFolderNotAvailableException").ToString+DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName">[DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -139,21 +130,11 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Flat file with item details folder" DisplayName="Invoke CreateSharedDriveFolder workflow - Flat file with item details Folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessFolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileWithItemDetailsFolder&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableException&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_Config("ProcessFolderPath").ToString+DateTime.Now.ToString("MMMyyyy")+"\"+in_Config("FlatFileWithItemDetailsFolder").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("SharedFolderNotAvailableException").ToString+DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName">[DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -163,21 +144,11 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Flat file without item details folder" DisplayName="Invoke CreateSharedDriveFolder workflow - Flat file without item details" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessFolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+in_Config(&quot;FlatFileWithOutItemDetailsFolder&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableException&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_Config("ProcessFolderPath").ToString+DateTime.Now.ToString("MMMyyyy")+"\"+in_Config("FlatFileWithOutItemDetailsFolder").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("SharedFolderNotAvailableException").ToString+DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName">[DateTime.Now.ToString("MMMyyyy")]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1274</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1357.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ValidateRequiredColumns_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -73,7 +73,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file validates whether required columns are present in the flat file or not" DisplayName="ValidateRequiredColumns" sap:VirtualizedContainerService.HintSize="476,1209.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file validates whether required columns are present in the flat file or not" DisplayName="ValidateRequiredColumns" sap:VirtualizedContainerService.HintSize="702.666666666667,1292.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="columnFlagValue" />
     </Sequence.Variables>
@@ -83,9 +83,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Validate required columns of flat file flow - Started " sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Validate required columns of flat file flow - Started &quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Checking for required flat file column" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Checking for required flat file column&quot;]" />
-    <TryCatch DisplayName="Try Catch: Check for required column name" sap:VirtualizedContainerService.HintSize="434,682.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message: Validate required columns of flat file flow - Started " sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Validate required columns of flat file flow - Started &quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Checking for required flat file column" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Checking for required flat file column&quot;]" />
+    <TryCatch DisplayName="Try Catch: Check for required column name" sap:VirtualizedContainerService.HintSize="660.666666666667,766" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Sequence: Check if any columnn is missing in the flat file" sap:VirtualizedContainerService.HintSize="622,504.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
@@ -95,9 +95,15 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LoopForMissingColumnName workflow" sap:VirtualizedContainerService.HintSize="580,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TSIPortal\LoopForMissingColumnName.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="s:String[]" x:Key="in_RequiredFlatFileColumn">[in_RequiredFlatFileColumn]</InArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ColumnMissingFlag">[columnFlagValue]</OutArgument>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile">[in_dt_FlatFille]</InArgument>
+              <InArgument x:TypeArguments="s:String[]" x:Key="in_RequiredFlatFileColumn">
+                <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="in_RequiredFlatFileColumn" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ColumnMissingFlag">
+                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="columnFlagValue" />
+              </OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_FlatFille" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <If Condition="[columnFlagValue]" DisplayName="If: Columns are incorrect" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
@@ -123,7 +129,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -137,10 +143,10 @@
             <ui:LogMessage DisplayName="Log Message: TSI : Column name is missing" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[exception.Message+ &quot; at &quot;+exception.Source]" />
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,487.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -148,7 +154,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception if column name is missing in flat file" DisplayName="Sequence: Send TSI column name missing exception" sap:VirtualizedContainerService.HintSize="376,416.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception if column name is missing in flat file" DisplayName="Sequence: Send TSI column name missing exception" sap:VirtualizedContainerService.HintSize="376,448.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -166,18 +172,10 @@
               </ui:LogMessage>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Sends TSI column name missing exception" DisplayName="Invoke SendExceptionEmail workflow - TSI Column name is missing" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Outlook\SendExceptionEmail.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSIColumnNameIsMissingSubject&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSIColumnNameIsMissingBody&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExceptionCCList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExceptionToList&quot;).ToString" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("TSIColumnNameIsMissingSubject").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config("TSIColumnNameIsMissingBody").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[in_Config("ExceptionCCList").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">[in_Config("ExceptionToList").ToString]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -191,6 +189,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Validate required columns of flat file flow - Ended" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Validate required columns of flat file flow - Ended &quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Validate required columns of flat file flow - Ended" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Validate required columns of flat file flow - Ended &quot;]" />
   </Sequence>
 </Activity>
