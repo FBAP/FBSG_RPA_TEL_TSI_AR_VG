@@ -9,7 +9,6 @@
     <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
     <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
     <x:Property Name="in_NumberOfRetries" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_RetryInterval" Type="InArgument(x:TimeSpan)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
     <x:Property Name="out_FilePath" Type="OutArgument(x:String)" />
@@ -17,13 +16,10 @@
   <this:DownloadFlaFileFromTsiPortal.in_NumberOfRetries>
     <InArgument x:TypeArguments="x:Int32" />
   </this:DownloadFlaFileFromTsiPortal.in_NumberOfRetries>
-  <this:DownloadFlaFileFromTsiPortal.in_RetryInterval>
-    <InArgument x:TypeArguments="x:TimeSpan" />
-  </this:DownloadFlaFileFromTsiPortal.in_RetryInterval>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,2067.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2098</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFlaFileFromTsiPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -86,7 +82,6 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -94,7 +89,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file downloads flat files from the TSI portal&#xA;Below are rthe paramaeteres which are used:&#xA;1. in_ItemDetailsFlag = Specify TRUE if you ned to download flat file with item details, else specify FALSE for flat file without item details." DisplayName="DownloadFlaFileFromTsiPortal" sap:VirtualizedContainerService.HintSize="752,2002.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file downloads flat files from the TSI portal&#xA;Below are rthe paramaeteres which are used:&#xA;1. in_ItemDetailsFlag = Specify TRUE if you ned to download flat file with item details, else specify FALSE for flat file without item details." DisplayName="DownloadFlaFileFromTsiPortal" sap:VirtualizedContainerService.HintSize="752,2033.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -103,7 +98,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message: Download Flat file flow started" sap:VirtualizedContainerService.HintSize="710,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;TSI: Download flat file flow - Started&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for Download flat files from portal" DisplayName="Try Catch: Download flat files from portal" sap:VirtualizedContainerService.HintSize="710,1646.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for Download flat files from portal" DisplayName="Try Catch: Download flat files from portal" sap:VirtualizedContainerService.HintSize="710,1677.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -111,13 +106,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: TSI portal home page" sap:VirtualizedContainerService.HintSize="671.333333333333,1354.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="948656dbc0b3402986033c3f43db0ef2" Selector="&lt;html app='chrome.exe' omit:title='*Product List*' /&gt;">
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: TSI portal home page" sap:VirtualizedContainerService.HintSize="671.333333333333,1385.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="948656dbc0b3402986033c3f43db0ef2" Selector="&lt;html app='chrome.exe' omit:title='*Product List*' /&gt;">
           <ui:BrowserScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="637.333333333333,1168.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="637.333333333333,1199.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="isInvoiceReportPageExists" />
                 </Sequence.Variables>
@@ -134,7 +129,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:LogMessage>
-                <ui:RetryScope sap2010:Annotation.AnnotationText="Checks if VIS Invoice details report page is exists or not.&#xA;If No, it retries for 3 times." DisplayName="Retry Scope: TSI invoice details report page" sap:VirtualizedContainerService.HintSize="595.333333333333,582" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
+                <ui:RetryScope sap2010:Annotation.AnnotationText="Checks if VIS Invoice details report page is exists or not.&#xA;If No, it retries for 3 times." DisplayName="Retry Scope: TSI invoice details report page" sap:VirtualizedContainerService.HintSize="595.333333333333,582" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
                       <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,190" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -176,7 +171,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
-                <If sap2010:Annotation.AnnotationText="Checks if Invoice details report page exists or not.&#xA;If no, it throws exception" Condition="[isInvoiceReportPageExists]" DisplayName="If: TSI invoice report page exists" sap:VirtualizedContainerService.HintSize="595.333333333333,320" sap2010:WorkflowViewState.IdRef="If_1">
+                <If sap2010:Annotation.AnnotationText="Checks if Invoice details report page exists or not.&#xA;If no, it throws exception" Condition="[isInvoiceReportPageExists]" DisplayName="If: TSI invoice report page exists" sap:VirtualizedContainerService.HintSize="595.333333333333,350.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -184,39 +179,22 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnterDetailsOnTsiDownloadFile workflow" sap:VirtualizedContainerService.HintSize="349.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\EnterDetailsOnTsiDownloadFile.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Enter details on TSI portal - GL date etc" DisplayName="Invoke EnterDetailsOnTsiDownloadFile workflow" sap:VirtualizedContainerService.HintSize="349.333333333333,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\EnterDetailsOnTsiDownloadFile.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayBefore&quot;).ToString)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayAfter&quot;).ToString)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;Timeout&quot;).ToString)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;GlFromDateValue&quot;).ToString)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;GlToDateValue&quot;).ToString)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">
-                          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_ItemDetailsFlag" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FlatFilePath" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">
-                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_FilePath" />
-                        </OutArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("Timeout").ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlFromDateValue">[CInt(in_Config("GlFromDateValue").ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_GlToDateValue">[CInt(in_Config("GlToDateValue").ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ItemDetailsFlag">[in_ItemDetailsFlag]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">[in_FlatFilePath]</InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">[out_FilePath]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>

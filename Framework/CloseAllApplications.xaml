@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CloseAllApplications" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1150,588.666666666667" sap2010:WorkflowViewState.IdRef="CloseAllApplications_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CloseAllApplications" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1153.33333333333,734.666666666667" sap2010:WorkflowViewState.IdRef="CloseAllApplications_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -47,7 +47,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="376,524" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="376,670" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -55,9 +55,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
-    <ui:CloseApplication DisplayName="Close Application: Excel" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_3">
+    <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application:&gt; Chrome" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
       <ui:CloseApplication.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1f55edf4-694d-4f5a-b360-da1594c1b6c8" InformativeScreenshot="b076f3592aed1648a9ae73dd6a2aa25b" Selector="&lt;wnd app='excel.exe' title='*' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9ac427f4-e4f3-4969-a4c9-c175ca5c7fbb" InformativeScreenshot="8c5449d0a9fb60a2c8f890af1cc5c69e" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -67,15 +67,24 @@
         </ui:Target>
       </ui:CloseApplication.Target>
     </ui:CloseApplication>
-    <ui:CloseApplication ContinueOnError="False" DisplayName="Close Application: Chrome" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_2">
+    <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application: Excel" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_2">
       <ui:CloseApplication.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="079e16c2-980a-4c99-aa78-b82d60302525" InformativeScreenshot="0f08a61646dd6b4d13eb081a7cdd2fca" Selector="&lt;html app='chrome.exe' title='*' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d89ba16c-6404-43dd-b083-372aff4e7f46" InformativeScreenshot="313400f626e4708d8fa76c9d2811a6b6" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' omit:title='vis_invoice_query_15Feb2023_170702.xlsx  -  Read-Only - Excel' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:CloseApplication.Target>
+    </ui:CloseApplication>
+    <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application: Outlook" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_3">
+      <ui:CloseApplication.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="70dadc59-0709-4212-987d-85df0cb9cc89" InformativeScreenshot="11934a44501aed4286e2cb404f7eee4a" Selector="&lt;wnd app='outlook.exe' /&gt;" WaitForReady="COMPLETE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
         </ui:Target>
       </ui:CloseApplication.Target>
     </ui:CloseApplication>

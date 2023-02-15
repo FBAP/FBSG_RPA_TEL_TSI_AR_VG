@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2968</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2556</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckPortalAccessibility_TSI_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -79,16 +79,16 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether TSI portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility_TSI" sap:VirtualizedContainerService.HintSize="778.666666666667,2903.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether TSI portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility_TSI" sap:VirtualizedContainerService.HintSize="870.666666666667,2491.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: TSI Login flow - Started" sap:VirtualizedContainerService.HintSize="736.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;TSI Login flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Opening TSI portal" sap:VirtualizedContainerService.HintSize="736.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening TSI portal&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for TSI portal accessibility" DisplayName="Try Catch: TSI portal accessibility" sap:VirtualizedContainerService.HintSize="736.666666666667,2362" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message: TSI Login flow - Started" sap:VirtualizedContainerService.HintSize="828.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;TSI Login flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Opening TSI portal" sap:VirtualizedContainerService.HintSize="828.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening TSI portal&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for TSI portal accessibility" DisplayName="Try Catch: TSI portal accessibility" sap:VirtualizedContainerService.HintSize="828.666666666667,1950" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -97,13 +97,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="This activity opens TSI web portal on the chrome browser.&#xA;&#xA;" BrowserType="Chrome" DisplayName="Open Browser: TSI portal" sap:VirtualizedContainerService.HintSize="698,2093.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[in_Portal]">
+        <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="This activity opens TSI web portal on the chrome browser.&#xA;&#xA;" BrowserType="Chrome" DisplayName="Open Browser: TSI portal" sap:VirtualizedContainerService.HintSize="790,1681.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[in_Portal]">
           <ui:OpenBrowser.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="664,1928.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="756,1516.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="isSignInExists" />
                   <Variable x:TypeArguments="x:Boolean" Name="isRestorePageExists" />
@@ -113,14 +113,14 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MaximizeWindow Window="{x:Null}" sap2010:Annotation.AnnotationText="Maximizes TSI portal " DisplayName="Maximize Window - TSI portal" sap:VirtualizedContainerService.HintSize="622,52.6666666666667" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2">
+                <ui:MaximizeWindow Window="{x:Null}" sap2010:Annotation.AnnotationText="Maximizes TSI portal " DisplayName="Maximize Window - TSI portal" sap:VirtualizedContainerService.HintSize="714,52.6666666666667" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:MaximizeWindow>
-                <ui:UiElementExists DisplayName="Element Exists: Restore page" Exists="[isRestorePageExists]" sap:VirtualizedContainerService.HintSize="622,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                <ui:UiElementExists DisplayName="Element Exists: Restore page" Exists="[isRestorePageExists]" sap:VirtualizedContainerService.HintSize="714,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                   <ui:UiElementExists.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="188e0062-818f-44ff-a03d-e1be63b2de3d" InformativeScreenshot="4d6a29b956baf72296a9d1fa64a01e0a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' omit:title='Restore pages?' /&gt;&lt;ctrl omit:name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -132,7 +132,7 @@
                     </ui:Target>
                   </ui:UiElementExists.Target>
                 </ui:UiElementExists>
-                <If Condition="[isRestorePageExists]" DisplayName="If:Restore page exists" sap:VirtualizedContainerService.HintSize="622,297.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+                <If Condition="[isRestorePageExists]" DisplayName="If:Restore page exists" sap:VirtualizedContainerService.HintSize="714,266.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
                   <If.Then>
                     <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Cancel" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                       <ui:Click.CursorPosition>
@@ -157,8 +157,11 @@
                       </ui:Click.Target>
                     </ui:Click>
                   </If.Then>
+                  <If.Else>
+                    <ui:LogMessage DisplayName="Log Message: Restore page not availabel" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Resotore page not available&quot;]" />
+                  </If.Else>
                 </If>
-                <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: TSI sign in pop up" sap:VirtualizedContainerService.HintSize="622,396.666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]">
+                <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: TSI sign in pop up" sap:VirtualizedContainerService.HintSize="714,396.666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
                       <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="200,84.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -187,14 +190,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
-                <If sap2010:Annotation.AnnotationText="Checks if TSI portal login page available or not,&#xA;If yes then it login into portal and if no then it throws exception" Condition="[isSignInExists]" DisplayName="If: TSI portal sign in page exists" sap:VirtualizedContainerService.HintSize="622,824" sap2010:WorkflowViewState.IdRef="If_1">
+                <If sap2010:Annotation.AnnotationText="Checks if TSI portal login page available or not,&#xA;If yes then it login into portal and if no then it throws exception" Condition="[isSignInExists]" DisplayName="If: TSI portal sign in page exists" sap:VirtualizedContainerService.HintSize="622,442.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,618" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,236.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -202,42 +205,11 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This .xaml file login into TSI portal" DisplayName="Invoke LoginTsiPortal workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\LoginTsiPortal.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayBefore&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;DelayAfter&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;Timeout&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;NumberOfRetries&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSIPortalNotAvailableException&quot;).ToString" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                          </InArgument>
-                        </ui:InvokeWorkflowFile.Arguments>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:InvokeWorkflowFile>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;second login&quot;]" />
-                      <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This .xaml file login into TSI portal" DisplayName="Invoke LoginTsiPortal workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TSIPortal\LoginTsiPortal.xaml">
-                        <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("Timeout").ToString)]</InArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[CInt(in_Config("NumberOfRetries").ToString)]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("TSIPortalNotAvailableException").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[TimeSpan.Parse(in_Config("RetryInterval").ToString)]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>

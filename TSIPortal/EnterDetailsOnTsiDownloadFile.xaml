@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="EnterDetailsOnTsiDownloadFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="EnterDetailsOnTsiDownloadFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_DelayBefore" Type="InArgument(x:Int32)" />
     <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
@@ -10,7 +10,7 @@
     <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
     <x:Property Name="out_FilePath" Type="OutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1150,3106.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2620</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -70,14 +70,12 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Downloads flat files with item details and without item details" DisplayName="Download flat files" sap:VirtualizedContainerService.HintSize="756,3042" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap2010:Annotation.AnnotationText="Downloads flat files with item details and without item details" DisplayName="Download flat files" sap:VirtualizedContainerService.HintSize="756,2555.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="glFromDate" />
       <Variable x:TypeArguments="x:String" Name="glToDate" />
-      <Variable x:TypeArguments="x:Boolean" Name="isMultipleFilesPopUp" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -191,53 +189,21 @@
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2654853b-5a0f-4260-b22d-fab907a17412" InformativeScreenshot="605c847314010e1e15e8c3c26e53df73" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;&lt;webctrl tag='INPUT' aaname='*Submit*' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
       </ui:Click.Target>
     </ui:Click>
-    <ui:UiElementExists DisplayName="Element Exists: Download multiple files" Exists="[isMultipleFilesPopUp]" sap:VirtualizedContainerService.HintSize="714,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-      <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3ff3a733-8777-4707-86d9-6e862b313589" InformativeScreenshot="40af5f3973eeab76d08c9eec3339a5e5" Selector="&lt;wnd aaname='http://tsiiserp8909.asia.tel.com wants to: Download multiple fil*' app='chrome.exe' cls='Chrome_WidgetWin_1' title='*http://tsiiserp8909.asia.tel.com wants to*' /&gt;&lt;ctrl name='http://tsiiserp8909.asia.tel.com wants to: Download multiple fil*' role='dialog' /&gt;&lt;ctrl name='Download multiple files' role='text' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-      </ui:UiElementExists.Target>
-    </ui:UiElementExists>
-    <If sap2010:Annotation.AnnotationText="If download multiple files pop up exists then click on allow button" Condition="[isMultipleFilesPopUp]" DisplayName="If: Download multiple files" sap:VirtualizedContainerService.HintSize="714,331.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:LogMessage DisplayName="Log Message: Clicked on submit button" sap:VirtualizedContainerService.HintSize="714,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Clicked on Submit button&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Enter details on TSI flow - Ended" sap:VirtualizedContainerService.HintSize="714,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Enter details on TSI portal to download file flow - Ended&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This .xaml file stores flat file on shared folder" DisplayName="Invoke StoreFileOnSharedDrive workflow" sap:VirtualizedContainerService.HintSize="714,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\StoreFileOnSharedDrive.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SourceFolderPath">[in_Config("DirectoryPath").ToString+Environment.UserName+in_Config("DowonloadFilePath").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_DestinationFolderPath">[in_FlatFilePath]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">[out_FilePath]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Allow" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
-          <ui:Click.CursorPosition>
-            <ui:CursorPosition Position="Center">
-              <ui:CursorPosition.OffsetX>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:CursorPosition.OffsetX>
-              <ui:CursorPosition.OffsetY>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:CursorPosition.OffsetY>
-            </ui:CursorPosition>
-          </ui:Click.CursorPosition>
-          <ui:Click.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="447397b7-6f6c-4035-86bf-1af6625ca95b" InformativeScreenshot="745a06b056c5254484dd3968331183fb" Selector="&lt;wnd aaname='http://tsiiserp8909.asia.tel.com wants to: Download multiple fil*' app='chrome.exe' cls='Chrome_WidgetWin_1' title='http://tsiiserp8909.asia.tel.com wants to' /&gt;&lt;ctrl name='http://tsiiserp8909.asia.tel.com wants to: Download multiple fil*' role='dialog' /&gt;&lt;ctrl name='Allow' role='push button' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-          </ui:Click.Target>
-        </ui:Click>
-      </If.Then>
-    </If>
-    <ui:LogMessage DisplayName="Log Message: Clicked on submit button" sap:VirtualizedContainerService.HintSize="714,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Clicked on Submit button&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Enter details on TSI flow - Ended" sap:VirtualizedContainerService.HintSize="714,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Enter details on TSI portal to download file flow - Ended&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke StoreFileOnSharedDrive workflow" sap:VirtualizedContainerService.HintSize="714,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\StoreFileOnSharedDrive.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SourceFolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DirectoryPath&quot;).ToString+Environment.UserName+in_Config(&quot;DowonloadFilePath&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_DestinationFolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FlatFilePath" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_FilePath" />
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>

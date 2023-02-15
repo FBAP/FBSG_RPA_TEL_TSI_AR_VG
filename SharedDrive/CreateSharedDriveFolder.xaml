@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1164</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1292.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateSharedDriveFolder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -70,7 +70,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -78,7 +77,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Check if required folder is available or not.&#xA;If no, then it creates required folder.&#xA;Below are the arguments/variables which are used:&#xA;1. in_FolderPath = Specify folder path which needs to be created.&#xA;2. in_IsCreateSharedFolder = If it sets to TRUE then only it creates required folder. If FALSE then it does not creates folder" DisplayName="CreateSharedDriveFolder" sap:VirtualizedContainerService.HintSize="476,1099.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Check if required folder is available or not.&#xA;If no, then it creates required folder.&#xA;Below are the arguments/variables which are used:&#xA;1. in_FolderPath = Specify folder path which needs to be created.&#xA;2. in_IsCreateSharedFolder = If it sets to TRUE then only it creates required folder. If FALSE then it does not creates folder" DisplayName="CreateSharedDriveFolder" sap:VirtualizedContainerService.HintSize="606.666666666667,1228" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isFolderExists" />
     </Sequence.Variables>
@@ -89,59 +88,65 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Create required shared folder flow - Started" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Create required shared folder flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Checking for the folder path" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking if required folder is exists or not&quot;]" />
-    <TryCatch DisplayName="Try Catch: Missing shared drive folder" sap:VirtualizedContainerService.HintSize="434,617.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message: Create required shared folder flow - Started" sap:VirtualizedContainerService.HintSize="564.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Create required shared folder flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Checking for the folder path" sap:VirtualizedContainerService.HintSize="564.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking if required folder is exists or not&quot;]" />
+    <TryCatch DisplayName="Try Catch: Missing shared drive folder" sap:VirtualizedContainerService.HintSize="564.666666666667,746" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="This checks for shared drive folder" DisplayName="Sequence: Check for shared drive folder" sap:VirtualizedContainerService.HintSize="200,114.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap2010:Annotation.AnnotationText="This checks for shared drive folder" DisplayName="Sequence: Check for shared drive folder" sap:VirtualizedContainerService.HintSize="526,508" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists: Shared drive folder" Exists="[isFolderExists]" sap:VirtualizedContainerService.HintSize="1044,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FolderPath]" PathType="Folder" />
-          <If sap2010:Annotation.AnnotationText="Check if Shared drive folder exists or not.&#xA;If no, create required folder" Condition="[isFolderExists]" DisplayName="If: Shared drive folder exists" sap:VirtualizedContainerService.HintSize="714,323.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+          <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists: Shared drive folder" Exists="[isFolderExists]" sap:VirtualizedContainerService.HintSize="484,52.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FolderPath]" PathType="Folder" />
+          <If sap2010:Annotation.AnnotationText="Check if Shared drive folder exists or not.&#xA;If no, create required folder" Condition="[isFolderExists]" DisplayName="If: Shared drive folder exists" sap:VirtualizedContainerService.HintSize="484,292.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <ui:LogMessage DisplayName="Log Message: Required folder exists" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Required folder exists&quot;]" />
+              <ui:LogMessage DisplayName="Log Message: Required folder exists" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Required folder exists&quot;]" />
             </If.Then>
             <If.Else>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateSharedFolder workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedFolder.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Create required shared folder" DisplayName="Invoke CreateSharedFolder workflow" sap:VirtualizedContainerService.HintSize="200,83.3333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedFolder.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">[in_IsCreateSharedFolder]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_ExceptionMessage]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
             </If.Else>
           </If>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,445.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="530.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ActivityAction x:TypeArguments="s:Exception">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception if shared drive folder is not available" DisplayName="Sequence: Send TSI SHared drive folder not available exception" sap:VirtualizedContainerService.HintSize="376,374.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception if shared drive folder is not available" DisplayName="Sequence: Send TSI SHared drive folder not available exception" sap:VirtualizedContainerService.HintSize="376,392" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,18 +164,10 @@
               </ui:LogMessage>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Sends TSI column name missing exception" DisplayName="Invoke SendExceptionEmail workflow - TSI Column name is missing" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Outlook\SendExceptionEmail.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableSubject&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableBody&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExceptionCCList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExceptionToList&quot;).ToString" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("SharedFolderNotAvailableSubject").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config("SharedFolderNotAvailableBody").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[in_Config("ExceptionCCList").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">[in_Config("ExceptionToList").ToString]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -184,6 +181,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Create required shared folder flow -Ended" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Create required shared folder flow -Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Create required shared folder flow -Ended" sap:VirtualizedContainerService.HintSize="564.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Create required shared folder flow -Ended&quot;]" />
   </Sequence>
 </Activity>
