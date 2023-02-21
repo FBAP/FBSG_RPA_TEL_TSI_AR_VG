@@ -5,8 +5,9 @@
     <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
     <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
     <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,509.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2020</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -87,14 +88,14 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Converts flat file from .xls to .xlsx" DisplayName="Sequence: Convert .xls to .xlsx" sap:VirtualizedContainerService.HintSize="376,444.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
+  <Sequence sap2010:Annotation.AnnotationText="Converts flat file from .xls to .xlsx" DisplayName="Sequence: Convert .xls to .xlsx" sap:VirtualizedContainerService.HintSize="476.666666666667,1955.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Convert .xls to .xlsx flow started" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;VG: TSI: Conversion of .xls to .xlsx flow started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Convert .xls to .xlsx flow started" sap:VirtualizedContainerService.HintSize="434.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;VG: TSI: Conversion of .xls to .xlsx flow started&quot;]" />
     <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope: .xls flat file" sap:VirtualizedContainerService.HintSize="434.666666666667,1563.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_XlsFilePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
@@ -196,17 +197,17 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:KillProcess AppliesTo="{x:Null}" Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process: Excel" sap:VirtualizedContainerService.HintSize="358.666666666667,135.333333333333" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="excel" />
+            <ui:KillProcess AppliesTo="{x:Null}" Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process: Excel" sap:VirtualizedContainerService.HintSize="358.666666666667,135.333333333333" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="[in_Config(&quot;Kill_Excel&quot;).ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:LogMessage DisplayName="Log Message: Convert .xls to .xlsx flow ended" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;VG: TSI: Conversion of .xls to .xlsx flow ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Convert .xls to .xlsx flow ended" sap:VirtualizedContainerService.HintSize="434.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;VG: TSI: Conversion of .xls to .xlsx flow ended&quot;]" />
   </Sequence>
 </Activity>

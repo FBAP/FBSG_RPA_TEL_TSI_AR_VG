@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2566</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2259.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckPortalAccessibility_TSI_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether TSI portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility_TSI" sap:VirtualizedContainerService.HintSize="870.666666666667,2501.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether TSI portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility_TSI" sap:VirtualizedContainerService.HintSize="870.666666666667,2194.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -88,7 +88,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message: TSI Login flow - Started" sap:VirtualizedContainerService.HintSize="828.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;TSI Login flow - Started&quot;]" />
     <ui:LogMessage DisplayName="Log Message: Opening TSI portal" sap:VirtualizedContainerService.HintSize="828.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening TSI portal&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for TSI portal accessibility" DisplayName="Try Catch: TSI portal accessibility" sap:VirtualizedContainerService.HintSize="828.666666666667,1960" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for TSI portal accessibility" DisplayName="Try Catch: TSI portal accessibility" sap:VirtualizedContainerService.HintSize="828.666666666667,1653.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -97,13 +97,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="This activity opens TSI web portal on the chrome browser.&#xA;&#xA;" BrowserType="Chrome" DisplayName="Open Browser: TSI portal" sap:VirtualizedContainerService.HintSize="790,1691.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[in_Portal]">
+        <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="This activity opens TSI web portal on the chrome browser.&#xA;&#xA;" BrowserType="Chrome" DisplayName="Open Browser: TSI portal" sap:VirtualizedContainerService.HintSize="790,1384.66666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[in_Portal]">
           <ui:OpenBrowser.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="756,1526.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="756,1220" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="isSignInExists" />
                   <Variable x:TypeArguments="x:Boolean" Name="isRestorePageExists" />
@@ -120,47 +120,25 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:MaximizeWindow>
-                <ui:UiElementExists DisplayName="Element Exists: Restore page" Exists="[isRestorePageExists]" sap:VirtualizedContainerService.HintSize="714,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
-                  <ui:UiElementExists.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="188e0062-818f-44ff-a03d-e1be63b2de3d" InformativeScreenshot="4d6a29b956baf72296a9d1fa64a01e0a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' omit:title='Restore pages?' /&gt;&lt;ctrl omit:name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' /&gt;">
-                      <ui:Target.TimeoutMS>
+                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click: Cancel" sap:VirtualizedContainerService.HintSize="714,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
                         <InArgument x:TypeArguments="x:Int32" />
-                      </ui:Target.TimeoutMS>
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="47f5d6e9-5274-4f28-b8d5-a9cd9b6beaec" InformativeScreenshot="b68be06e4460a5cd3ca87ef95fd1e0fc" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Restore pages?' /&gt;&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Close' role='push button' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeoutForPopup&quot;))]">
                       <ui:Target.WaitForReady>
                         <InArgument x:TypeArguments="ui:WaitForReady" />
                       </ui:Target.WaitForReady>
                     </ui:Target>
-                  </ui:UiElementExists.Target>
-                </ui:UiElementExists>
-                <If Condition="[isRestorePageExists]" DisplayName="If:Restore page exists" sap:VirtualizedContainerService.HintSize="714,266.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
-                  <If.Then>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Cancel" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
-                      <ui:Click.CursorPosition>
-                        <ui:CursorPosition Position="Center">
-                          <ui:CursorPosition.OffsetX>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:CursorPosition.OffsetX>
-                          <ui:CursorPosition.OffsetY>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:CursorPosition.OffsetY>
-                        </ui:CursorPosition>
-                      </ui:Click.CursorPosition>
-                      <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="47f5d6e9-5274-4f28-b8d5-a9cd9b6beaec" InformativeScreenshot="b68be06e4460a5cd3ca87ef95fd1e0fc" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Restore pages?' /&gt;&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Close' role='push button' /&gt;">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:Click.Target>
-                    </ui:Click>
-                  </If.Then>
-                  <If.Else>
-                    <ui:LogMessage DisplayName="Log Message: Restore page not availabel" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Resotore page not available&quot;]" />
-                  </If.Else>
-                </If>
+                  </ui:Click.Target>
+                </ui:Click>
                 <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: TSI sign in pop up" sap:VirtualizedContainerService.HintSize="714,498.666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>

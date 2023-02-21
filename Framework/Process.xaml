@@ -228,7 +228,7 @@
           <OutArgument x:TypeArguments="x:String">[out_ItemDetailsPath]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[withItemDetailsPath.Replace(".xls",".xlsx")]</InArgument>
+          <InArgument x:TypeArguments="x:String">[withItemDetailsPath.Replace(in_Config("Extension_xls").ToString,in_Config("Extension_xlsx").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
       <Assign DisplayName="Assign: Flat file without item details" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -236,7 +236,7 @@
           <OutArgument x:TypeArguments="x:String">[out_WithoutItemDetailsPath]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[withoutItemDetailsPath.Replace(".xls",".xlsx")]</InArgument>
+          <InArgument x:TypeArguments="x:String">[withoutItemDetailsPath.Replace(in_Config("Extension_xls").ToString,in_Config("Extension_xlsx").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Converts flatfile from .xls to .xlsx - Without item details" DisplayName="Invoke ConvertXlsToXlsx workflow: Without item details" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="TSIPortal\ConvertXlsToXlsx.xaml">
@@ -255,6 +255,9 @@
           </InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
             <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_WithoutItemDetailsPath" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
           </InArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
@@ -279,6 +282,9 @@
           </InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_FlatFilePath">
             <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_ItemDetailsPath" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
           </InArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>

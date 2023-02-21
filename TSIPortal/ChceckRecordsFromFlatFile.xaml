@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1429.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1429.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ChceckRecordsFromFlatFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -78,6 +78,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks records are present or not in the flat file" DisplayName="ChceckRecordsFromFlatFile" sap:VirtualizedContainerService.HintSize="702.666666666667,1364.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -108,7 +109,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dt_FlatFile]" DisplayName="Read Range: Flat File" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" PreserveFormat="True" SheetName="Sheet1">
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dt_FlatFile]" DisplayName="Read Range: Flat File" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" PreserveFormat="True" SheetName="[in_Config(&quot;SheetName_FlatFile&quot;).ToString]">
                     <ui:ExcelReadRange.Range>
                       <InArgument x:TypeArguments="x:String">
                         <Literal x:TypeArguments="x:String" Value="" />
@@ -126,7 +127,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
           <ui:LogMessage DisplayName="Log Message: Check records are present are not in the flat file flow - started" sap:VirtualizedContainerService.HintSize="580,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Check records are present are not in the flat file flow - Started &quot;]" />
-          <If sap2010:Annotation.AnnotationText="If records are not present in the flat file, then it throws exception" Condition="[out_dt_FlatFile.Rows(0)(&quot;Invoice Category&quot;).ToString.Contains(&quot;No data found&quot;) or out_dt_FlatFile.Rows.Count = 0]" DisplayName="If: Datatable contains records" sap:VirtualizedContainerService.HintSize="580,289.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+          <If sap2010:Annotation.AnnotationText="If records are not present in the flat file, then it throws exception" Condition="[out_dt_FlatFile.Rows(0)(in_Config(&quot;ColumnName_FlatFile_InvoiceCategory&quot;).ToString).ToString.Contains(in_Config(&quot;Sentence_NoDataFound&quot;).ToString) Or out_dt_FlatFile.Rows.Count = 0]" DisplayName="If: Datatable contains records" sap:VirtualizedContainerService.HintSize="580,289.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
