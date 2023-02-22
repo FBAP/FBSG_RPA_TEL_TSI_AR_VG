@@ -10,7 +10,7 @@
     <x:Property Name="in_FlatFilePath" Type="InArgument(x:String)" />
     <x:Property Name="out_FilePath" Type="OutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2486</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>390,2486</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -70,7 +70,6 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Downloads flat files with item details and without item details" DisplayName="Download flat files" sap:VirtualizedContainerService.HintSize="376,2421.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -118,13 +117,13 @@
         <InArgument x:TypeArguments="x:String">[DateTime.Now.AddDays(-in_GlToDateValue).ToString(in_Config("DateTimeFormat_GLToDate").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: GL From date" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[glFromDate]">
+    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into: GL From date" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[glFromDate]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="24668af3-8429-44ac-9dc7-0351d09fecc1" InformativeScreenshot="109bd5003128d014542634a5f62b6623" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;&lt;webctrl tag='INPUT' name='txtFromDate' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="24668af3-8429-44ac-9dc7-0351d09fecc1" InformativeScreenshot="109bd5003128d014542634a5f62b6623" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;&lt;webctrl tag='INPUT' name='txtFromDate' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="INTERACTIVE" />
       </ui:TypeInto.Target>
     </ui:TypeInto>
     <ui:LogMessage DisplayName="Log Message: GL From date" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;GL From Date: &quot;+glFromDate+&quot; entered&quot;]" />
-    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: GL To date" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[glToDate]">
+    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into: GL To date" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[glToDate]">
       <ui:TypeInto.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="547c4b5b-8783-4272-9ded-52889157ce64" InformativeScreenshot="154f2c12e16b907de2487fa8f93bac9a" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;&lt;webctrl name='txtToDate' tag='INPUT' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
       </ui:TypeInto.Target>
@@ -175,7 +174,7 @@
       </ui:Click.Target>
     </ui:Click>
     <ui:LogMessage DisplayName="Log Message: Clicked on Export to Excel checkbox" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Clicked on Export to excel checkbox&quot;]" />
-    <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Submit button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Submit button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
